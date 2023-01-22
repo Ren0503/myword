@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { logout } from "apps/auth/actions";
-import { getProfileDetails, updateProfile } from "../actions";
-import { ProfileDetailState } from "../interfaces";
+import { getProfileDetails, updateProfile } from "apps/profiles/actions";
+import { ProfileDetailState } from "apps/profiles/interfaces";
 
 const initialProfileDetailsState: ProfileDetailState = {
   loading: false,

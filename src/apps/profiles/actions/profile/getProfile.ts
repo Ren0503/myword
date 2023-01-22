@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
+import { IGetProfileRequest, IProfile } from "apps/profiles/interfaces"
 import { api, RootState } from "base"
-import { IGetProfileRequest, IProfile } from "../interfaces"
 
 export const PROFILE_DETAILS = 'PROFILE_DETAILS'
 
