@@ -1,9 +1,9 @@
 import { AuthLayout, Input, isLowerCase, isNotEmpty, useAppDispatch, useAppSelector } from 'base'
-import React, { useState, useEffect, useCallback, SyntheticEvent } from 'react'
-import { Button, Form, Spinner } from 'react-bootstrap'
+import { MDBBtn, MDBSpinner } from 'mdb-react-ui-kit'
+import { SyntheticEvent, useCallback, useEffect, useState } from 'react'
+import { Form } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../actions'
-
 export const LoginScreen = () => {
   const navigate = useNavigate()
 
@@ -32,9 +32,9 @@ export const LoginScreen = () => {
   return (
     <AuthLayout>
       {loading ? (
-        <Spinner />
+        <MDBSpinner />
       ) : (
-        <Form onSubmit={submitHandler}>
+        <Form validated={false} onSubmit={submitHandler}>
           <Input
             field='usernameOrEmail'
             autoComplete='email'
@@ -65,7 +65,7 @@ export const LoginScreen = () => {
             }
           />
 
-          <Button type='submit'>Login</Button>
+          <MDBBtn type='submit'>Login</MDBBtn>
         </Form>
       )}
     </AuthLayout>

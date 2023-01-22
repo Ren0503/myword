@@ -1,3 +1,4 @@
+import { MDBInput } from 'mdb-react-ui-kit'
 import React, { HTMLInputTypeAttribute, useState } from 'react'
 import { Form } from 'react-bootstrap'
 
@@ -11,7 +12,7 @@ interface InputProps {
   type?: HTMLInputTypeAttribute
 }
 
-export const Input: React.FC<InputProps> = ({ 
+export const Input: React.FC<InputProps> = ({
   field,
   autoComplete,
   label,
@@ -25,19 +26,18 @@ export const Input: React.FC<InputProps> = ({
   return (
     <Form.Group className='py-3'>
       <Form.Label>{label}</Form.Label>
-      <Form.Control 
+      <MDBInput
         type={type || 'text'}
         autoComplete={autoComplete}
         name={field}
         id={field}
         onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
         onChange={(e) => setFields(e.target.value)}
-        isInvalid={validation && isFocus}
+        required
       />
-      {validation && isFocus 
-      ? <Form.Text>{message}</Form.Text>
-      : <></>
+      {validation && isFocus
+        ? <Form.Text>{message}</Form.Text>
+        : <></>
       }
     </Form.Group>
   )

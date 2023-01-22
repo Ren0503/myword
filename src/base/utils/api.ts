@@ -34,6 +34,12 @@ export const api = async (endpoint: string, {
     config.data = data
   }
 
+  if (isFile) {
+    config.headers = {
+      setContentType: 'multipart/form-data',
+    }
+  }
+
   try {
     const res = await axios(endpoint, config)
     return res.data
