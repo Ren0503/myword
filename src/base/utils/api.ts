@@ -6,7 +6,7 @@ export type Method = 'POST' | 'GET' | 'PATCH' | 'PUT' | 'DELETE'
 interface ApiProps {
   method: Method
   token?: string
-  data: any
+  data?: any
   isFile?: boolean
   customConfig?: any
 }

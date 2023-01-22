@@ -1,5 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { userLoginSlice, userRegisterSlice } from "apps";
+import { 
+  profileDetailsSlice,
+  profileUpdateSlice,
+  userLoginSlice, 
+  userRegisterSlice 
+} from "apps";
 import persistReducer from "redux-persist/es/persistReducer";
 import persistStore from "redux-persist/es/persistStore";
 import storage from "redux-persist/lib/storage";
@@ -13,6 +18,8 @@ const persistConfig = {
 const rootReducers = combineReducers({
   userLogin: persistReducer(persistConfig, userLoginSlice.reducer),
   userRegister: userRegisterSlice.reducer,
+  profileDetails: profileDetailsSlice.reducer,
+  profileUpdate: profileUpdateSlice.reducer,
 })
 
 export const store = configureStore({
