@@ -1,26 +1,6 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { 
-  profileDetailsSlice,
-  profileUpdateSlice,
-  userLoginSlice, 
-  userRegisterSlice 
-} from "apps";
-import persistReducer from "redux-persist/es/persistReducer";
+import { configureStore } from "@reduxjs/toolkit";
 import persistStore from "redux-persist/es/persistStore";
-import storage from "redux-persist/lib/storage";
-
-const persistConfig = {
-  key: 'userLogin',
-  storage,
-  whiteList: ['token']
-}
-
-const rootReducers = combineReducers({
-  userLogin: persistReducer(persistConfig, userLoginSlice.reducer),
-  userRegister: userRegisterSlice.reducer,
-  profileDetails: profileDetailsSlice.reducer,
-  profileUpdate: profileUpdateSlice.reducer,
-})
+import { rootReducers } from "./rootReducers";
 
 export const store = configureStore({
   reducer: rootReducers,

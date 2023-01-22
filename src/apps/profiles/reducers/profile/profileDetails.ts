@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { logout } from "apps/auth/actions";
 import { getProfileDetails, updateProfile } from "apps/profiles/actions";
 import { ProfileDetailState } from "apps/profiles/interfaces";
 
@@ -18,9 +17,6 @@ export const profileDetailsSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(logout, (state) => {
-      state.profile = undefined
-    })
     builder.addCase(getProfileDetails.pending, (state) => {
       state.loading = true
       state.profile = undefined
@@ -33,7 +29,7 @@ export const profileDetailsSlice = createSlice({
       state.loading = false
       state.profile = payload
     })
-    builder.addCase(getProfileDetails.rejected, (state, action) => {
+    builder.addCase(getProfileDetails.rejected, (state) => {
       state.loading = false
     })
   },

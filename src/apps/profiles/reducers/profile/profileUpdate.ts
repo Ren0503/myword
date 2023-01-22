@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { logout } from "apps/auth/actions";
 import { updateProfile } from "apps/profiles/actions";
 import { ProfileUpdateState } from "apps/profiles/interfaces";
 
@@ -20,10 +19,6 @@ export const profileUpdateSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(logout, (state) => {
-      state.profile = undefined
-      state.success = true
-    })
     builder.addCase(updateProfile.pending, (state) => {
       state.loading = true
       state.profile = undefined
@@ -34,7 +29,7 @@ export const profileUpdateSlice = createSlice({
       state.profile = payload
       state.success = true
     })
-    builder.addCase(updateProfile.rejected, (state, action) => {
+    builder.addCase(updateProfile.rejected, (state) => {
       state.loading = false
       state.success = false
     })

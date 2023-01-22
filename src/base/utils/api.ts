@@ -6,13 +6,14 @@ export type Method = 'POST' | 'GET' | 'PATCH' | 'PUT' | 'DELETE'
 interface ApiProps {
   method: Method
   token?: string
+  params?: any
   data?: any
   isFile?: boolean
   customConfig?: any
 }
 
 export const api = async (endpoint: string, {
-  method, token, data, isFile, ...customConfig
+  method, token, data, params, isFile, ...customConfig
 }: ApiProps) => {
   const config: RawAxiosRequestConfig = {
     ...customConfig,
@@ -32,6 +33,10 @@ export const api = async (endpoint: string, {
 
   if (data) {
     config.data = data
+  }
+
+  if (params) {
+    config.params = params
   }
 
   if (isFile) {
