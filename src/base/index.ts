@@ -1,5 +1,6 @@
 export * from './components'
 export * from './hooks'
+export * from './interfaces'
 export * from './layouts'
 export * from './store'
 export * from './utils'

@@ -15,10 +15,10 @@ export interface IRegisterRequest {
 
 export interface UserRegisterState {
   loading: boolean
-  token: string | undefined
+  token?: string
 }
 
 export interface UserLoginState {
   loading: boolean
-  token: string | undefined
+  token?: string
 }

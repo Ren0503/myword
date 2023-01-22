@@ -1,7 +1,7 @@
+import { IModel } from "base"
 import { GENDER_OPTIONS, PROFILE_ROLE, PROFILE_STATUS } from "../constants"
 
-export interface IProfile {
-  id: string
+export interface IProfile extends IModel {
   name: string
   domain: string
   gender: GENDER_OPTIONS
@@ -23,12 +23,12 @@ export interface IGetProfileRequest {
 export interface IUpdateProfileRequest extends Omit<IProfile, 'id'> {}
 
 export interface ProfileDetailState {
-  loading: boolean
-  profile: IProfile | undefined
+  loading?: boolean
+  profile?: IProfile
 }
 
 export interface ProfileUpdateState {
-  loading: boolean
-  profile: IProfile | undefined
-  success: boolean
+  loading?: boolean
+  profile?: IProfile
+  success?: boolean
 }
