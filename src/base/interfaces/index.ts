@@ -4,3 +4,8 @@ export interface IModel {
   updatedAt: Date
   deletedAt: Date
 }
+
+export interface IQueryParams {
+  page?: number
+  limit?: number
+}

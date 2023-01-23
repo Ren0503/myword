@@ -15,3 +15,9 @@ export enum POST_STATUS {
   DELETED = 'DELETED',
   BANNED = 'BANNED'
 }
+
+export enum QUERY_POST_TYPE {
+  COMMUNITY = 'COMMUNITY',
+  GROUP = 'GROUP',
+  USER = 'USER',
+}

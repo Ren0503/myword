@@ -1,5 +1,9 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import {
+  postCreateSlice,
+  postDeleteSlice,
+  postListSlice,
+  postUpdateSlice,
   profileDetailsSlice,
   profileUpdateSlice,
   relationCreateSlice,
@@ -20,6 +24,10 @@ const persistConfig = {
 }
 
 const appReducers = combineReducers({
+  postCreate: postCreateSlice.reducer,
+  postList: postListSlice.reducer,
+  postUpdate: postUpdateSlice.reducer,
+  postDelete: postDeleteSlice.reducer,
   profileDetails: profileDetailsSlice.reducer,
   profileUpdate: profileUpdateSlice.reducer,
   relationCreate: relationCreateSlice.reducer,
