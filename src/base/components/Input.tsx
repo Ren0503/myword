@@ -1,12 +1,12 @@
-import { MDBInput } from 'mdb-react-ui-kit'
+import { Label, TextInput } from 'flowbite-react'
 import React, { HTMLInputTypeAttribute, useState } from 'react'
-import { Form } from 'react-bootstrap'
 
 interface InputProps {
   field: string
   autoComplete?: string
   label: string
   setFields: (value: React.SetStateAction<string>) => void
+  required: boolean
   validation: boolean
   message: string
   type?: HTMLInputTypeAttribute
@@ -17,28 +17,45 @@ export const Input: React.FC<InputProps> = ({
   autoComplete,
   label,
   setFields,
+  required,
   validation,
   message,
   type,
 }: InputProps) => {
   const [isFocus, setIsFocus] = useState(false)
+  let color 
+
+  if (isFocus) {
+    if (validation) {
+      color = 'success'
+    } else {
+      color = 'failure'
+    }
+  } else {
+    color = 'info'
+  }
 
   return (
-    <Form.Group className='py-3'>
-      <Form.Label>{label}</Form.Label>
-      <MDBInput
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor={field} value={label} />
+      </div>
+      <TextInput 
+        id={field}
+        value={field}
+        color={color}
+        required={required}
         type={type || 'text'}
         autoComplete={autoComplete}
-        name={field}
-        id={field}
         onFocus={() => setIsFocus(true)}
+        onBlur={() => setIsFocus(false)}
         onChange={(e) => setFields(e.target.value)}
-        required
+        helperText={
+          <React.Fragment>
+            <span className='font-medium'>{message}</span>
+          </React.Fragment>
+        }
       />
-      {validation && isFocus
-        ? <Form.Text>{message}</Form.Text>
-        : <></>
-      }
-    </Form.Group>
+    </div>
   )
 }

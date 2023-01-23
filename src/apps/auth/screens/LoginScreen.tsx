@@ -1,7 +1,6 @@
-import { AuthLayout, Input, isLowerCase, isNotEmpty, useAppDispatch, useAppSelector } from 'base'
-import { MDBBtn, MDBSpinner } from 'mdb-react-ui-kit'
+import { AuthLayout, Input, isLowerCase, useAppDispatch, useAppSelector } from 'base'
+import { Button, Spinner } from 'flowbite-react'
 import { SyntheticEvent, useCallback, useEffect, useState } from 'react'
-import { Form } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../actions'
 export const LoginScreen = () => {
@@ -32,23 +31,21 @@ export const LoginScreen = () => {
   return (
     <AuthLayout>
       {loading ? (
-        <MDBSpinner />
-      ) : (
-        <Form validated={false} onSubmit={submitHandler}>
+  <Spinner
+  aria-label="Medium sized spinner example"
+  size="md"
+/>
+    ) : (
+        <form className="flex flex-col gap-4" onSubmit={submitHandler}>
           <Input
             field='usernameOrEmail'
             autoComplete='email'
             type='text'
             label='Username Or Email'
             setFields={setUsernameOrEmail}
-            validation={isNotEmpty(usernameOrEmail) || isLowerCase(usernameOrEmail)}
-            message={
-              isNotEmpty(usernameOrEmail)
-                ? 'This field is required'
-                : isLowerCase(usernameOrEmail)
-                  ? 'This field only lowercase'
-                  : ''
-            }
+            required={true}
+            validation={isLowerCase(usernameOrEmail)}
+            message={'This filed is must be lowercase'}
           />
 
           <Input
@@ -56,17 +53,14 @@ export const LoginScreen = () => {
             autoComplete='password'
             type='password'
             label='Password'
+            required={true}
             setFields={setPassword}
-            validation={isNotEmpty(password)}
-            message={
-              isNotEmpty(password)
-                ? 'This field is required'
-                : ''
-            }
+            validation={true}
+            message=''
           />
 
-          <MDBBtn type='submit'>Login</MDBBtn>
-        </Form>
+          <Button type='submit'>Login</Button>
+        </form>
       )}
     </AuthLayout>
   )
