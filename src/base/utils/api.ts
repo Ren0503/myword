@@ -17,7 +17,7 @@ export const api = async (endpoint: string, {
 }: ApiProps) => {
   const config: RawAxiosRequestConfig = {
     ...customConfig,
-    baseURL: `http://localhost:5000/api/`,
+    baseURL: import.meta.env.BASE_URL,
     method,
     headers: {
       'Content-Type': 'application/json',
