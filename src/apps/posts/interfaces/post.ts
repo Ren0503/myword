@@ -1,5 +1,7 @@
 import { IModel, IQueryParams } from "base";
 import { POST_MODE, POST_STATUS, POST_TYPE, QUERY_POST_TYPE } from "../constants";
+import { IComment } from "./comment";
+import { IReactStats } from "./react";
 
 export interface IPost extends IModel {
   type: POST_TYPE
@@ -8,7 +10,9 @@ export interface IPost extends IModel {
   video?: string
   mode: POST_MODE
   status: POST_STATUS
+  reacts?: IReactStats[]
   totalReacts: number
+  comments?: IComment[]
   totalComments: number
 }
 

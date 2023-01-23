@@ -10,12 +10,7 @@ const initialProfileDetailsState: ProfileDetailState = {
 export const profileDetailsSlice = createSlice({
   name: 'profileDetails',
   initialState: initialProfileDetailsState,
-  reducers: {
-    reset: (state) => {
-      state.loading = false
-      state.profile = undefined
-    }
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getProfileDetails.pending, (state) => {
       state.loading = true

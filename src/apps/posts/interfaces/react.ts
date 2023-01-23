@@ -12,25 +12,18 @@ export interface IReact extends IModel {
 }
 
 export interface UpsertReactRequest {
+  type: REACT_TYPE
   post?: string
   comment?: string
 }
 
-export interface ListReactRequest extends IQueryParams {
+export interface IReactStats {
+  type: REACT_TYPE
+  users: IProfile[]
+  total: number
+}
+
+export interface GetReactRequest extends IQueryParams {
   post?: string
   comment?: string
-}
-
-export interface ReactUpsertState {
-  loading?: boolean
-  react?: IReact
-  success?: boolean
-}
-
-export interface ReactListState {
-  loading?: boolean
-  reacts: {
-    type: REACT_TYPE
-    users: IProfile[]
-  }[]
 }

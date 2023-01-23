@@ -10,12 +10,7 @@ const initialRelationListState: RelationListState = {
 export const relationListSlice = createSlice({
   name: 'relationList',
   initialState: initialRelationListState,
-  reducers: {
-    reset: (state) => {
-      state.loading = false
-      state.relations = []
-    }
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getRelations.pending, (state) => {
       state.loading = true

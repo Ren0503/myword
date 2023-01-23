@@ -11,13 +11,7 @@ const initialPostListPostListState:PostListState = {
 export const postListSlice = createSlice({
   name: 'postList',
   initialState: initialPostListPostListState,
-  reducers: {
-    reset: (state) => {
-      state.loading = false
-      state.posts = []
-      state.total = undefined
-    }
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getPosts.pending, (state) => {
       state.loading = true
