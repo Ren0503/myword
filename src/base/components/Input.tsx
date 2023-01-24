@@ -21,7 +21,7 @@ export const Input: React.FC<InputProps> = ({
   validation,
   message,
   type,
-}: InputProps) => {
+}) => {
   const [isFocus, setIsFocus] = useState(false)
   let color 
 
