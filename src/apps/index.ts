@@ -1,3 +1,4 @@
 export * from './auth'
-export * from './profiles'
+export * from './groups'
 export * from './posts'
+export * from './profiles'

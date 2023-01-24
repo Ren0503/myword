@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { GetPostRequest, IPost } from "apps/posts/interfaces"
-import { api, RootState } from "base"
+import { api, IGetMany, RootState } from "base"
 
 export const GET_POSTS = 'GET_POSTS'
 
-export const getPosts = createAsyncThunk<{ posts: IPost[], total: number }, GetPostRequest>(
+export const getPosts = createAsyncThunk<IGetMany<IPost>, GetPostRequest>(
   GET_POSTS, async (args, thunkAPI) => {
     const state: RootState = thunkAPI.getState() as RootState
     const token = state.userLogin.token
@@ -15,9 +15,9 @@ export const getPosts = createAsyncThunk<{ posts: IPost[], total: number }, GetP
       params: args,
     })
 
-    const { posts, total } = data
+    const { posts: list, total } = data
     return {
-      posts,
+      list,
       total
     }
   }

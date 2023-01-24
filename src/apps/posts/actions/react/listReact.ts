@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { GetReactRequest, IReactStats } from "apps/posts/interfaces"
-import { api, RootState } from "base"
+import { api, IGetMany, RootState } from "base"
 
 export const LIST_REACTS = 'LIST_REACTS'
 
-export const listReacts = createAsyncThunk<{ reacts: IReactStats[], total: number }, GetReactRequest>(
+export const listReacts = createAsyncThunk<IGetMany<IReactStats>, GetReactRequest>(
   LIST_REACTS, async (args, thunkAPI) => {
     const state: RootState = thunkAPI.getState() as RootState
     const token = state.userLogin.token
@@ -15,9 +15,9 @@ export const listReacts = createAsyncThunk<{ reacts: IReactStats[], total: numbe
       params: args
     })
 
-    const { reacts, total } = data
+    const { reacts: list, total } = data
     return {
-      reacts,
+      list,
       total,
     }
   }

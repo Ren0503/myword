@@ -1,0 +1,5 @@
+export enum GROUP_MODE {
+  HIDDEN = 'HIDDEN',
+  PRIVATE = 'PRIVATE',
+  PUBLIC = 'PUBLIC',
+}

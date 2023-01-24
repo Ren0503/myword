@@ -1,5 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import {
+  groupCreateSlice,
+  groupDeleteSlice,
+  groupDetailsSlice,
+  groupListSlice,
+  groupUpdateSlice,
   postCreateSlice,
   postDeleteSlice,
   postListSlice,
@@ -24,6 +29,11 @@ const persistConfig = {
 }
 
 const appReducers = combineReducers({
+  groupCreate: groupCreateSlice.reducer,
+  groupList: groupListSlice.reducer,
+  groupDetails: groupDetailsSlice.reducer,
+  groupUpdate: groupUpdateSlice.reducer,
+  groupDelete: groupDeleteSlice.reducer,
   postCreate: postCreateSlice.reducer,
   postList: postListSlice.reducer,
   postUpdate: postUpdateSlice.reducer,
