@@ -20,7 +20,7 @@ export const postListSlice = createSlice({
     })
     builder.addCase(getPosts.fulfilled, (state, { payload}) => {
       state.loading = false
-      state.posts = payload.posts
+      state.posts = payload.list
       state.total = payload.total
     })
     builder.addCase(getPosts.rejected, (state) => {

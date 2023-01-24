@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { IGetRelationRequest, IProfile } from "apps/profiles/interfaces"
-import { api, RootState } from "base"
+import { api, IGetMany, RootState } from "base"
 
 export const GET_RELATIONS = 'GET_RELATIONS'
 
-export const getRelations = createAsyncThunk<IProfile[], IGetRelationRequest>(
+export const getRelations = createAsyncThunk<IGetMany<IProfile>, IGetRelationRequest>(
   GET_RELATIONS, async (args, thunkAPI) => {
     const state: RootState = thunkAPI.getState() as RootState
     const token = state.userLogin.token
@@ -17,7 +17,10 @@ export const getRelations = createAsyncThunk<IProfile[], IGetRelationRequest>(
       data: { domain, type, status }
     })
 
-    const { relations } = data
-    return relations as IProfile[]
+    const { relations: list, total } = data
+    return {
+      list,
+      total,
+    }
   }
 )

@@ -18,7 +18,7 @@ export const relationListSlice = createSlice({
     })
     builder.addCase(getRelations.fulfilled, (state, { payload }) => {
       state.loading = false
-      state.relations = payload
+      state.relations = payload.list
     })
     builder.addCase(getRelations.rejected, (state) => {
       state.loading = false
